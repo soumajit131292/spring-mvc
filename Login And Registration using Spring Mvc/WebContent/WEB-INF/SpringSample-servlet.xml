@@ -1,0 +1,61 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Adding Support for Component Scan -->
+	<context:component-scan
+		base-package="com.bridgelabz.controller" />
+
+	<!-- Configure View Resolver -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/userregistrationspring" />
+		<property name="username" value="souma" />
+		<property name="password" value="password" />
+
+	</bean>
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="soumajit131292@gmail.com" />
+		<property name="password" value="9883739884Sr" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="daobean" class="com.bridgelabz.service.AppDaoImpl">
+		<property name="mailSender" ref="mailSender"></property>
+
+	</bean>
+
+	<bean id="repo" class="com.bridgelabz.repository.Repo">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+		<property name="dataSource" ref="dataSource"></property>
+
+	</bean>
+
+
+</beans>
