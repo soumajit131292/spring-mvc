@@ -18,18 +18,9 @@ import com.bridgelabz.model.RegistrationDetails;
 public class Repo {
 
 	RegistrationDetails details;
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	private DataSource dataSource;
-
-//setter injection dataSource
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-
-//setter injection for jdbcTemplate
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
+	
 
 //registration
 	public int doregister(RegistrationDetails userDetails) {
@@ -85,6 +76,6 @@ public class Repo {
 	public void setPasswordToDataBase(String password, String email) {
 
 		String sql = "update UserRegistration set password = ? where emailId= ?";
-		int n = jdbcTemplate.update(sql, password, email);
+		jdbcTemplate.update(sql, password, email);
 	}
 }

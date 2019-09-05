@@ -19,11 +19,8 @@ public class AppDaoImpl implements UserService {
 	@Autowired
 	Repo repo;
 
+	@Autowired
 	private MailSender mailSender;
-
-	public void setMailSender(MailSender mailSender) {
-		this.mailSender = mailSender;
-	}
 
 //calling for registration	
 	@Override

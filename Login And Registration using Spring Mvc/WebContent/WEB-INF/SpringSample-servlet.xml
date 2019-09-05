@@ -47,13 +47,10 @@
 	</bean>
 
 	<bean id="daobean" class="com.bridgelabz.service.AppDaoImpl">
-		<property name="mailSender" ref="mailSender"></property>
 
 	</bean>
 
 	<bean id="repo" class="com.bridgelabz.repository.Repo">
-		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
-		<property name="dataSource" ref="dataSource"></property>
 
 	</bean>
 
