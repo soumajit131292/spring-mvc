@@ -13,8 +13,8 @@ import com.bridgelabz.model.LoginPojo;
 import com.bridgelabz.model.RegistrationDetails;
 import com.bridgelabz.repository.Repo;
 
-@Service
-public class AppDaoImpl implements Dao {
+@Service()
+public class AppDaoImpl implements UserService {
 
 	@Autowired
 	Repo repo;

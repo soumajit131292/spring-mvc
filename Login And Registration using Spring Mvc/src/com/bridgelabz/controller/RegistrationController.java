@@ -13,12 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bridgelabz.model.RegistrationDetails;
 import com.bridgelabz.service.AppDaoImpl;
+import com.bridgelabz.service.UserService;
 
 @Controller
 public class RegistrationController {
 
 	@Autowired
-	AppDaoImpl daobean;
+	UserService daobean;
 
 //handler mapping for UserRegistration page
 	@RequestMapping(value = "/UserRegistration", method = RequestMethod.GET)
@@ -33,8 +34,9 @@ public class RegistrationController {
 	public ModelAndView addUser(@ModelAttribute RegistrationDetails userDetails)
 			throws NoSuchAlgorithmException, NoSuchProviderException {
 		String password = userDetails.getPassword();
-		String pass = daobean.getSecurePassword(password);
-		userDetails.setPassword(pass);
+
+		String encryptpass = ((AppDaoImpl) daobean).getSecurePassword(password);
+		userDetails.setPassword(encryptpass);
 		if (daobean.register(userDetails) > 0)
 			return new ModelAndView("register");
 		else

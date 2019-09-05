@@ -13,12 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bridgelabz.model.LoginPojo;
 import com.bridgelabz.service.AppDaoImpl;
+import com.bridgelabz.service.UserService;
 
 @Controller
 public class LoginController {
 
 	@Autowired
-	AppDaoImpl daobean;
+	UserService daobean;
 
 //handler mapping
 	@RequestMapping(value = "/Loginjsp", method = RequestMethod.GET)
@@ -34,8 +35,8 @@ public class LoginController {
 			throws NoSuchAlgorithmException, NoSuchProviderException {
 		ModelAndView mav = null;
 		String password = loginDetails.getPassword();
-		String pass = daobean.getSecurePassword(password);
-		loginDetails.setPassword(pass);
+		String encryptpass = ((AppDaoImpl) daobean).getSecurePassword(password);
+		loginDetails.setPassword(encryptpass);
 		int valid = daobean.login(loginDetails);
 		if (valid == 1) {
 			mav = new ModelAndView("welcome");
@@ -45,4 +46,5 @@ public class LoginController {
 		}
 		return mav;
 	}
+
 }

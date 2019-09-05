@@ -3,7 +3,7 @@ package com.bridgelabz.service;
 import com.bridgelabz.model.LoginPojo;
 import com.bridgelabz.model.RegistrationDetails;
 
-public interface Dao {
+public interface UserService {
 
 	public int register(RegistrationDetails userDetails);
 

@@ -1,7 +1,5 @@
 package com.bridgelabz.controller;
 
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bridgelabz.model.ForgetPassword;
-import com.bridgelabz.service.AppDaoImpl;
+import com.bridgelabz.service.UserService;
 
 @Controller
 public class EmailSenderController {
 
 	@Autowired
-	AppDaoImpl daobean;
+	UserService daobean;
 	private String emailid = null;
 	private String otpSystemGenerate = null;
 
