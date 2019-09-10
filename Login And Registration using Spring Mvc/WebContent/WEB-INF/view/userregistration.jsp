@@ -5,7 +5,9 @@
 
 <!DOCTYPE html>
 <html>
-
+<style>
+.errors{color:red}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -13,18 +15,24 @@
 <body>
 	<form:form action="registerProcess" modelAttribute="userDetails">
   FirstName :
-  <form:input path="firstname" /><br/>
+  <form:input path="firstname" />
+  <form:errors path="firstname" cssClass="errors"/><br/><br/>
    LastName:
-   <form:input path="lastname" /><br/>
+   <form:input path="lastname" />
+   
+   <br/>
 		<p />
    Password:
-  <form:password path="password" /><br/>
+  <form:password path="password" required="true"/>
+  <form:errors path="password" cssClass="errors"/><br/><br/>
     MobileNumber:
-  <form:input path="mobileNumber" /><br/>
+  <form:input path="mobileNumber" />
+  <form:errors path="mobileNumber" cssClass="errors"/><br/>
+  
   EmailId:
-  <form:input path="emailId" /><br/>
+  <form:input path="emailId" required="true"/><br/>
   Gender:
-         Male<form:radiobutton path="gender" value="Male" />
+         Male<form:radiobutton path="gender" value="Male" checked="checked"/>
          Female: <form:radiobutton path="gender" value="Female" />
 		<p /><br/>
 		Country:

@@ -9,11 +9,7 @@
 <body>
 	<h1>Welcome</h1>
 	<h2>
-		click<a href="Loginjsp">here</a> to go further
+		click<a href="login">here</a> to go further
 	</h2>
-
-
-
-
 </body>
 </html>

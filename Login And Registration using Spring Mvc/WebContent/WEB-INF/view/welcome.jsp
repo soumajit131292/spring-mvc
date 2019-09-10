@@ -11,7 +11,7 @@
 <body>
 
 	<h1>Welcome back to our Club ${firstname}</h1>
-    <a href=Loginjsp>Log out</a>
+    <a href=login>Log out</a>
     
 </body>
 </html>

@@ -4,8 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -15,9 +13,8 @@ import com.bridgelabz.model.LoginPojo;
 import com.bridgelabz.model.RegistrationDetails;
 
 @Repository
-public class Repo {
+public class AppDaoImpl implements AppDao{
 
-	RegistrationDetails details;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	

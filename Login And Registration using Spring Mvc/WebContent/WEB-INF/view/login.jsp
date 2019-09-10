@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Forgot Password</title>
 </head>
 <body>
 <form:form action="loginProcess" modelAttribute="loginDetails">
@@ -21,8 +21,8 @@
   
   <input type="submit" value="Log in"><br/>
   <br/>
-  <a href="Forget">Forget password</a><br/>
- <br/>click here for <a href="UserRegistration">Registration</a>
+  <a href="forget">Forget password</a><br/>
+ <br/>click here for <a href="userregistration">Registration</a>
   
   
   </form:form>

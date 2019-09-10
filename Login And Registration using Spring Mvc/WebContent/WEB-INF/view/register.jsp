@@ -8,6 +8,6 @@
 </head>
 <body>
  <h2>registered</h2> 
-  <a href=Loginjsp>Log out</a>
+  <a href=login>Log out</a>
 </body>
 </html>

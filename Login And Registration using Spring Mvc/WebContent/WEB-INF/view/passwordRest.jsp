@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>password reset !!!</h2>
-click <a href="Loginjsp">here</a> to go back
+click <a href="login">here</a> to go back
 </body>
 </html>

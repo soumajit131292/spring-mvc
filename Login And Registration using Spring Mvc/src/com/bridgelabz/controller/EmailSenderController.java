@@ -15,14 +15,14 @@ import com.bridgelabz.service.UserService;
 public class EmailSenderController {
 
 	@Autowired
-	UserService daobean;
+	private UserService userserviceimpl;
 	private String emailid = null;
 	private String otpSystemGenerate = null;
 
 // handler mapping for Forget page
-	@RequestMapping(value = "/Forget", method = RequestMethod.GET)
+	@RequestMapping(value = "/forget", method = RequestMethod.GET)
 	public ModelAndView showLogin(@ModelAttribute ForgetPassword forgetPasswordDetails) {
-		ModelAndView mv = new ModelAndView("Forget");
+		ModelAndView mv = new ModelAndView("forget");
 		mv.addObject("forgetPasswordDetails", forgetPasswordDetails);
 		return mv;
 	}
@@ -31,10 +31,10 @@ public class EmailSenderController {
 	@PostMapping(value = "/emailSendingProcess")
 	public ModelAndView sendMail(@ModelAttribute ForgetPassword forgetPasswordDetails) {
 		emailid = forgetPasswordDetails.getEmailid();
-		int result = daobean.checkEmailIsPresent(emailid);
+		int result = userserviceimpl.checkEmailIsPresent(emailid);
 		if (result > 0) {
 			otpSystemGenerate = "abcd";
-			daobean.sendMail(emailid, otpSystemGenerate);
+			userserviceimpl.sendMail(emailid, otpSystemGenerate);
 			ModelAndView mv = new ModelAndView("enterpassword");
 			mv.addObject("forgetPasswordDetails", forgetPasswordDetails);
 			return mv;
@@ -49,7 +49,7 @@ public class EmailSenderController {
 	public String setPassword(@ModelAttribute ForgetPassword forgetPasswordDetails) {
 
 		if (forgetPasswordDetails.getOtp().equals(otpSystemGenerate)) {
-			daobean.setPassword(forgetPasswordDetails.getPassword(), emailid);
+			userserviceimpl.setPassword(forgetPasswordDetails.getPassword(), emailid);
 			return "passwordRest";
 		} else
 			return "invalidOtp";

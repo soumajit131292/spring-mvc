@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 
 import com.bridgelabz.model.LoginPojo;
 import com.bridgelabz.model.RegistrationDetails;
-import com.bridgelabz.repository.Repo;
+import com.bridgelabz.repository.AppDao;
 
 @Service()
-public class AppDaoImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	Repo repo;
+	 private AppDao daoImpl;
 
 	@Autowired
 	private MailSender mailSender;
@@ -25,22 +25,20 @@ public class AppDaoImpl implements UserService {
 //calling for registration	
 	@Override
 	public int register(RegistrationDetails userDetails) {
-		int result = repo.doregister(userDetails);
+		int result = daoImpl.doregister(userDetails);
 		return result;
 	}
 
 //calling for login
 	public int login(LoginPojo loginDetails) {
-		int result = repo.doLogin(loginDetails);
+		int result = daoImpl.doLogin(loginDetails);
 		return result;
 	}
 
 //calling for mail id is present or not
 	public int checkEmailIsPresent(String email) {
-		int result = repo.checkEmail(email);
+		int result = daoImpl.checkEmail(email);
 		if (result > 0) {
-			// repo.sendMail(email);
-			// sendMail(email, password);
 			return 1;
 		}
 		return 0;
@@ -48,7 +46,7 @@ public class AppDaoImpl implements UserService {
 
 //calling for password reset 
 	public void setPassword(String password, String emailid) {
-		repo.setPasswordToDataBase(password, emailid);
+		daoImpl.setPasswordToDataBase(password, emailid);
 	}
 
 //sending email to user
